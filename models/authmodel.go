@@ -26,8 +26,17 @@ type Token struct {
 	DeletedAt gorm.DeletedAt `gorm:"index"`
 	// Foreign key dependency with the user model
 	UserID    uuid.UUID // Foreign key referencing the User's ID
-	Email     string
+	Email     string    //`gorm:"uniqueIndex"`
 	Token     string
 	IssuedAt  time.Time
 	ExpiredAt time.Time
+}
+
+// TokenBlacklist represents the database model for revoked tokens
+type TokenBlacklist struct {
+	ID        uint   `gorm:"primaryKey"`
+	Token     string `gorm:"unique"`
+	Reason    string
+	ExpiresAt time.Time
+	CreatedAt time.Time
 }

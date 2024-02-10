@@ -28,6 +28,8 @@ func main() {
 	users.SignINRoute(r)
 	//users RefreshToken route
 	users.RefreshTokenRoute(r)
+	//users RevokeToken route
+	users.RovokeTokenRoute(r)
 	//Product Route
 	products.ProductRoutes(r)
 	// Run the server

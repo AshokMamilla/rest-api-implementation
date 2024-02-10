@@ -23,3 +23,6 @@ func SignINRoute(r *gin.Engine) {
 func RefreshTokenRoute(r *gin.Engine) {
 	r.POST("/refresh-token", func(c *gin.Context) { auth.RefreshToken(c) })
 }
+func RovokeTokenRoute(r *gin.Engine) {
+	r.POST("/revoke-token", func(c *gin.Context) { auth.RevokeToken(c) })
+}

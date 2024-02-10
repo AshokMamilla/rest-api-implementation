@@ -19,7 +19,7 @@ func InitDB() (*gorm.DB, error) {
 	}
 
 	// Auto-migrate schema
-	err = db.AutoMigrate(&models.User{}, &models.Token{})
+	err = db.AutoMigrate(&models.User{}, &models.Token{}, &models.TokenBlacklist{})
 	if err != nil {
 		L.RaiLog("E", "Error Occurred During Auto Migration", err)
 		return nil, err
