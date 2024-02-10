@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// gorm.Model definition
+// GormModel gorm.Model definition
 type GormModel struct {
 	ID        uuid.UUID      `gorm:"type:uuid;primaryKey"`
 	CreatedAt time.Time      `gorm:"index" json:"created" `
@@ -18,6 +18,7 @@ type User struct {
 	GormModel
 	Email    string `gorm:"uniqueIndex"`
 	Password string
+	Tokens   []Token
 }
 
 func (u *User) BeforeCreate(tx *gorm.DB) (err error) {

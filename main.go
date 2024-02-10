@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"rest-api-implementation/api/products"
 	"rest-api-implementation/api/users"
 	C "rest-api-implementation/config"
 	L "rest-api-implementation/middleware/logger"
@@ -20,6 +21,19 @@ func main() {
 	if err != nil {
 		L.RaiLog("E", "Error Occured while connecting database", err)
 	}
-	users.SignUpRoute(r)
 
+	//User Sign-up Route
+	users.SignUpRoute(r)
+	//User Sign-in Route
+	users.SignINRoute(r)
+	//users RefreshToken route
+	users.RefreshTokenRoute(r)
+	//Product Route
+	products.ProductRoutes(r)
+	// Run the server
+	err = r.Run(":8080")
+	if err != nil {
+		L.RaiLog("E", "Error while dealing with server port", err)
+		return
+	}
 }

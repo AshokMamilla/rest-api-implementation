@@ -19,7 +19,7 @@ func InitDB() (*gorm.DB, error) {
 	}
 
 	// Auto-migrate schema
-	err = db.AutoMigrate(&models.User{})
+	err = db.AutoMigrate(&models.User{}, &models.Token{})
 	if err != nil {
 		L.RaiLog("E", "Error Occurred During Auto Migration", err)
 		return nil, err
@@ -28,6 +28,8 @@ func InitDB() (*gorm.DB, error) {
 	defer CloseDB(db)
 	return db, nil
 }
+
+var SecretKey string
 
 // OpenDB opens the database connection
 func OpenDB() (*gorm.DB, error) {
@@ -44,12 +46,17 @@ func OpenDB() (*gorm.DB, error) {
 		os.Getenv("POSTGRES_DB"),
 		"5432",
 	)
+	// Get the secret key from the environment variables
+	SecretKey = os.Getenv("SECRET")
+
 	// Connect to PostgresSQL database
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		L.RaiLog("E", "Error Occurred while opening dbConnection", err)
 		return nil, err
 	}
+	//get secret key from .env file
+
 	return db, nil
 }
 
