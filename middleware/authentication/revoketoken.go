@@ -12,7 +12,7 @@ import (
 func RevokeToken(c *gin.Context) {
 	// Get token to revoke from request
 	token := c.GetHeader("Authorization")
-	if token == "" {
+	if token == "" || token == "Bearer <access_token>" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Token to revoke is missing"})
 		return
 	}
