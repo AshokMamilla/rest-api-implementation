@@ -117,9 +117,8 @@ This will rebuild the API with your changes and start the project again.
    ```
 3. Autorize Request:
    ```
-     curl -X GET http://localhost:8080/protected \
-    -H "Authorization: Bearer <access_token>"
-
+     curl -i -X GET http://localhost:8080/protected \
+     -H "Authorization: Bearer <access_token>"
    ```
 4. Refresh Token Endpoint:
   ``` 
