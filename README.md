@@ -115,11 +115,11 @@ This will rebuild the API with your changes and start the project again.
     ```
     curl -i -X POST http://localhost:8080/signin -d "{\"Email\":\"ashokmamilla899@gmail.com\", \"Password\":\"ashok53323\"}" -H "Content-Type: application/json"
    ```
-3. Autorize Request:
+3. Authorize Request:
    ```
-     curl -i -X GET http://localhost:8080/protected \
-     -H "Authorization: Bearer <access_token>"
+     curl -i -X GET http://localhost:8080/protected \-H "Authorization: Bearer <access_token>"
    ```
+   Note: Make the command as single line otherwise curl throws an error.
 4. Refresh Token Endpoint:
   ``` 
    curl -X POST http://localhost:8080/refresh-token -H "Authorization: Bearer <refresh_token>" 
