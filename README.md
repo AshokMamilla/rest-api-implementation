@@ -113,7 +113,7 @@ This will rebuild the API with your changes and start the project again.
     ```
 2. SignIn Endpoint:
     ```
-     curl -X POST http://localhost:8080/signin -d '{"Email":"example@example.com", "Password":"password123"}'
+    curl -i -X POST http://localhost:8080/signin -d "{\"Email\":\"ashokmamilla899@gmail.com\", \"Password\":\"ashok53323\"}" -H "Content-Type: application/json"
    ```
 3. Autorize Request:
    ```
